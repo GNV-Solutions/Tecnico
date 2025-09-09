@@ -1,21 +1,28 @@
-int PinA0 = A0; //PINO UTILIZADO PELO SENSOR MQ-2
-int leitura_sensor = 200; //DEFININDO UM VALOR LIMITE (NÍVEL de GÁS NORMAL 0 - 1023)
+const int PINO_SENSOR_MQ2 = A0;
+
+const int VALOR_MINIMO = 100;
+const int VALOR_MAXIMO = 1000;
 
 void setup() {
-pinMode(PinA0, INPUT); //DEFINE O PINO DE ENTRADA
-Serial.begin(9600); //INICIALIZA O SERIAL(INICIAR A COMUNICAÇÂO COM O PC)
-
+  Serial.begin(9600);
 }
 
 void loop() {
-int valor_analogico = analogRead(PinA0); //VARIÁVEL RECEBE O VALOR LIDO NO PINO ANALÓGICO
-float tensao = (float)valor_analogico * 5.0 / 1023.0; // CONVERTER O VALOR ANALOGICO EM TEMPERATURA
-float temperaturaC = tensao * 100.0; // TRANSFORMAR A TEMPERATURA EM PORCENTAGEM
- int percentualGases = map(temperaturaC, 0, 1023, 0, 255); // Mapeamento para a escala de 0-100%
-  percentualGases = constrain(percentualGases, 0, 100); // Limita a percentagem entre 0 e 100%
-  Serial.print("Leitura: "); //EXIBE O TEXTO NO MONITOR SERIAL
-  Serial.print(percentualGases); //MOSTRA NO MONITOR SERIAL O VALOR LIDO DO PINO ANALÓGICO
-  Serial.println("%");
-  delay(100); //INTERVALO DE 100 MILISSEGUNDOS 
+int valorSensor = analogRead(PINO_SENSOR_MQ2);
+
+float porcentagem = ((float)(valorSensor - VALOR_MINIMO) / (VALOR_MAXIMO - VALOR_MINIMO)) * 100;
+
+if (porcentagem < 0) {
+  porcentagem = 0;
+} else if (porcentagem > 100) {
+  porcentagem = 100;
 }
-  
+
+// Serial.print("Valor de Saída do Sensor: ");
+// Serial.print(valorSensor);
+Serial.print(" -> Porcentagem: ");
+Serial.print(porcentagem);
+Serial.println("%");
+
+delay(1000);
+}
