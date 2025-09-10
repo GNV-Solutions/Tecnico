@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Pedir o valor do investimento para criar o posto, ganhos mensais e tamanho do posto em km, depois disso faça calcúlos sobre a perda do posto como: tempo para reconstrução e perca de vendas por conta da inoperança do posto/ Fale o Valor da multa, Diga a quantidade de Perdas  -->
+</head>
+<body>
+    <h1 style="color: cadetblue;">Calculadora de Perdas</h1> <hr>
+    <h3>Uma estimativa de perdas em caso de uma explosão</h3>
+    <Span>Insira os ganhos mensais:</Span> <br>
+    <input id="ipGanhos" type="text" placeholder="R$"> <br> <br>
+    <Span>Insira o periodo da reforma:</Span> <br>
+    <input id="ipParalizacao" type="text" placeholder="Meses"> <br> <br>
+    <span>Insira os valores da reforma:</span> <br>
+    <input id="ipReforma" type="text" placeholder="R$"> <br> <br>
+    <span>Insira a classificação das vitimas:</span> <br>
+    <input id="ipFeridos" type="text" placeholder="Ferido ou Morto"> <br> <br>
+    <span>Insira o número de vítimas:</span> <br>
+    <input id="ipVitimas" type="text" placeholder="Quantidade de Vitimas"> <br> <br>
+    <button onclick="Explosão()">Perda por Explosão</button>
+    <div id="div_mensagem"></div>
+</body>
+</html> 
+    <script>
+        function Explosão(){
+            var ganhos = Number(ipGanhos.value);
+            var mesParado = Number(ipParalizacao.value);
+            var reforma = Number(ipReforma.value);
+            var tipoFerido = ipFeridos.value;
+            var vitimas = Number(ipVitimas.value);
+            var indenizacao = 0;
+
+            if (tipoFerido == "Ferido") {
+                indenizacao += 50000
+            }
+            if (tipoFerido == "Morto") {
+                indenizacao += 300000
+            }
+            
+
+            var perdaMes = ganhos * mesParado;
+            var totIndenizacao = indenizacao * vitimas;
+            var prejuizo = perdaMes + totIndenizacao + reforma;
+
+            div_mensagem.innerHTML = `Em caso de explosão no seu posto você terá uma perda total de R$${prejuizo} até que seu posto seja reconstruido em ${mesParado} meses, sendo R$${indenizacao} por indenização ás vítimas.`
+        }
+    </script>
