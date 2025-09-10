@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Calculadora de Risco - GNV Solutions</h1>
+
+    <label>
+        Qual o valor investido na construção do seu posto?  <br>
+        <input type="number" id="input_investido" placeholder="Insira o valor investido"> <br> <br>
+    </label>
+
+    <label>
+        Qual a média do faturamento diário do seu posto? <br>
+        <input type="number" id="input_faturamento" placeholder="Insira o faturamento"> <br> <br>
+    </label>
+
+    <label>
+        Quantos dispensers (bomba de gnv) seu posto possui? <br>
+        <input type="number" id="input_dispenser" placeholder="Insira os dispensers"> <br> <br>
+    </label>
+
+    <button onclick="calcularRisco()">Calcular Risco</button> <br> <br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function calcularRisco() {
+        // Criar as variáveis com os valores das inputs
+        var investido = Number(input_investido.value);
+        var faturamento = Number(input_faturamento.value);
+        var dispenser = Number(input_dispenser.value); 
+        // Criar variáveis calculando prejuízo com a estrutura de acordo com a gravidade do acidente
+        var acidenteLeve = investido * 0.2
+        var acidenteMedio = investido * 0.4
+        var acidenteGrave = investido * 0.6
+        // Criar variáveis calculando a perda de faturamento de acordo com os dias em manutenção
+        var faturamentoLeve = faturamento * 5
+        var faturamentoMedio = faturamento * 7
+        var faturamentoGrave = faturamento * 14
+
+        div_mensagem.innerHTML = `<i> Lembre-se: O risco de um veículo com vazamento abastecer <br>
+        em um dos ${dispenser} dispensers do posto é de até <b>78%</b>, segunda a ANP.</i> <br> <br>
+        <b>Prejuízo estrutural:</b> <br>
+        Acidente Leve (~20%): R$${acidenteLeve} <br>
+        Acidente Médio (~40%): R$${acidenteMedio} <br>
+        Acidente Grave (~60%): R$${acidenteLeve} <br> <br>
+
+        <b>Faturamento Perdido:</b> <br>
+        Leve (~5 dias):  R$${faturamentoLeve} <br>
+        Médio (~7 dias): R$${faturamentoLeve} <br>
+        Grave (~14 dias): R$${faturamentoLeve} <br> <br>
+        <b>Prejuízo total:</b> <br>
+        Leve: R$${acidenteLeve + faturamentoLeve} <br>
+        Médio: R$${acidenteMedio + faturamentoMedio} <br>
+        Grave: R$${acidenteGrave + faturamentoGrave}<br> <br>` 
+    }
+</script>
