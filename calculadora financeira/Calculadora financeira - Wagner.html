@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora Posto GNV</title>
+</head>
+<body>
+  <h1>Calculadora Financeira - Posto GNV</h1>
+
+  <p>Preço do GNV (R$ por m³): 
+    <input id="input_preco"></p>
+  <p>Volume vendido por mês (m³): 
+    <input id="input_vendas"></p>
+  <p>Taxa de perda por vazamento (%): 
+    <input id="input_perda"></p>
+  <p>Valor do sistema de detecção (R$): 
+    <input id="input_custo"></p>
+
+  <button onclick="calcular()">Calcular</button>
+
+  <div id="div_mensagem"></div>
+
+</body>
+</html>
+ <script>
+    function calcular() {
+      // Pegar valores dos inputs
+      var preco = Number(input_preco.value);
+      var vendas = Number(input_vendas.value);
+      var perda = Number(input_perda.value);
+      var custoSistema = Number(input_custo.value);
+
+      // Cálculos
+      var perdaM3 = (vendas * perda) / 100;
+      var prejuizo = perdaM3 * preco;
+      var economia = prejuizo;
+      var mesesRetorno = custoSistema / economia;
+
+      // Mostrar resultado
+      var mensagem = 
+        "Perda estimada sem o sistema: R$ " + prejuizo + "<br>" +
+        "Economia estimada com o sistema: R$ " + economia + "<br>";
+
+      // Se o retorno for menor que 1 mês, mostra em dias
+      if (mesesRetorno < 1) {
+        var dias = mesesRetorno * 30; 
+        mensagem += "Tempo de retorno do investimento: " + dias + " dias";
+      } else {
+        mensagem += "Tempo de retorno do investimento: " + mesesRetorno + " meses";
+      }
+
+      div_mensagem.innerHTML = mensagem;
+    }
+  </script>
