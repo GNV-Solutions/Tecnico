@@ -48,21 +48,21 @@
   </body>
 </html>
 <script>
+  var diaFechado = 0;
+  var prejuizoTotal = 0;
   function Calcular() {
     var faturamento = Number(input_faturamento.value);
     var porcentagemLucro = Number(input_lucro.value);
     var estrutura = Number(input_investimento.value);
     var cilindro = input_cilindro.value;
-    var diaFechado = 0;
     var porcentagemDestruicao = 0;
-    var prejuizoTotal = 0;
     var lucroDiario = (porcentagemLucro / 100) * faturamento;
 
     if (cilindro == "Pequeno") {
       //cilindros leves
       diaFechado = 3;
       porcentagemDestruicao = 0.1;
-      estrutura *= porcentagemDestruicao; // Porcentagem de destruição da estrutura
+      estrutura *= porcentagemDestruicao; // Prejuizo de acordo com a porcentagem de destruição da estrutura
       faturamento *= diaFechado; // Quantidade de dias de prejuízo do faturamento por conta de paralização
       prejuizoTotal = estrutura + faturamento;
     }
@@ -70,7 +70,7 @@
       // cilindros médios
       diaFechado = 10;
       porcentagemDestruicao = 0.3;
-      estrutura *= porcentagemDestruicao; // Porcentagem de destruição da estrutura
+      estrutura *= porcentagemDestruicao; // Prejuizo de acordo com a porcentagem de destruição da estrutura
       faturamento *= diaFechado; // Quantidade de dias de prejuízo do faturamento por conta de paralização
       prejuizoTotal = estrutura + faturamento;
     }
@@ -78,7 +78,7 @@
       //cilindros grandes
       diaFechado = 30;
       porcentagemDestruicao = 0.5;
-      estrutura *= porcentagemDestruicao; // Valor de prejuizo de acordo com a orcentagem de destruição da estrutura
+      estrutura *= porcentagemDestruicao; //Prejuizo de acordo com a porcentagem de destruição da estrutura
       faturamento *= diaFechado; // Quantidade de dias de prejuízo do faturamento por conta de paralização
       prejuizoTotal = estrutura + faturamento;
     }
