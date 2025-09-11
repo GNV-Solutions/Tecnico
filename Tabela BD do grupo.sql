@@ -62,3 +62,17 @@ INSERT INTO ManutencaoSensor VALUES
 	(default, '2025-10-02', 'Calibração');
     
 SELECT * FROM ManutencaoSensor;
+
+/*-------------------*/
+
+CREATE TABLE Estoque(
+idProduto INT PRIMARY KEY AUTO_INCREMENT,
+nomeProduto VARCHAR(15),
+dataCompra DATE
+);
+
+INSERT INTO Estoque VALUES
+	(default, 'sensor', '2025-09-16'),
+	(default, 'arduino', '2025-09-16');
+
+SELECT * FROM Estoque;
