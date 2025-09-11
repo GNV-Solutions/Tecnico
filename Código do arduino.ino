@@ -18,11 +18,15 @@ if (porcentagem < 0) {
   porcentagem = 100;
 }
 
-// Serial.print("Valor de Saída do Sensor: ");
-// Serial.print(valorSensor);
-Serial.print(" -> Porcentagem: ");
+Serial.print("Aviso grave:");
+Serial.print(70);
+Serial.print(" ");
+Serial.print("Porcentagem:");
 Serial.print(porcentagem);
-Serial.println("%");
+Serial.print(" ");
+Serial.print("Valor mínimo:");
+Serial.print(5);
+Serial.println(" ");
 
 delay(1000);
 }
