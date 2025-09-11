@@ -88,8 +88,8 @@ create table Estoque(
 	id_estoque int primary key auto_increment,
     sensor int,
     arduino int,
-    sensor_manutencao boolean,
-    arduino_manutencao boolean
+    sensor_manutencao tinyint,
+    arduino_manutencao tinyint
     );
     
 DESC Estoque;
