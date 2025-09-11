@@ -1,69 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- Pegue as informações com o cliente: Ganhos Mensais do Posto,Investimento na Construção do Posto, Multa do Posto e Indenizações para Funcionários ou Clientes. Calcule:A Perda Estrutural do Posto, A Perda do Faturamento,  -->
-</head>
-<body>
+  </head>
+  <body>
     <div>
-        <h1>Simulador de prejuízo financeiro </h1> <br>
-        Qual o faturamento diário do posto: <br> 
-        <input type="number" id="input_faturamento" placeholder="Insira o faturamento"> <br> <br>
-        Qual a margem de lucro do posto: <br>
-        <input type="number" id="input_lucro" placeholder="Insira a margem em pocentagem"> <br> <br>
-        Qual foi o investimento na construção do posto:<br>
-        <input type="number" id="input_investimento" placeholder="Insira o investimento"> <br> <br>
-        Qual o tamanho do cilindro que explodiu: <br>
-        <input type="text" id="input_cilindro" placeholder="Pequeno, médio ou grande"> <br> <br>
-        <button onclick="Calcular()">Calcular prejuízo</button>
+      <h1>Simulador de prejuízo financeiro</h1>
+      <br />
+      Qual o faturamento diário do posto: <br />
+      <input
+        type="number"
+        id="input_faturamento"
+        placeholder="Insira o faturamento"
+      />
+      <br />
+      <br />
+      Qual a margem de lucro do posto: <br />
+      <input
+        type="number"
+        id="input_lucro"
+        placeholder="Insira em pocentagem"
+      />
+      <br />
+      <br />
+      Qual foi o investimento na construção do posto:<br />
+      <input
+        type="number"
+        id="input_investimento"
+        placeholder="Insira o investimento"
+      />
+      <br />
+      <br />
+      Qual o tamanho do cilindro que explodiu: <br />
+      <input
+        type="text"
+        id="input_cilindro"
+        placeholder="Pequeno, médio ou grande"
+      />
+      <br />
+      <br />
+      <button onclick="Calcular()">Calcular prejuízo</button>
     </div>
 
     <div id="div_mensagem"></div>
-</body>
+  </body>
 </html>
-    <Script>
-        function Calcular(){
-            var faturamento = Number(input_faturamento.value);
-            var estrutura = Number(input_investimento.value);
-            var cilindro =  input_cilindro.value;
-            var diaFechado = 0;
-            var porcentagemDestruicao = 0;
-            var prejuizoTotal = 0; 
-            var porcentagemLucro = Number(input_lucro.value);
-            var lucroDiario = (porcentagemLucro / 100) * faturamento
-            var diasRecuperacao = prejuizoTotal / lucroDiario 
+<script>
+  function Calcular() {
+    var faturamento = Number(input_faturamento.value);
+    var porcentagemLucro = Number(input_lucro.value);
+    var estrutura = Number(input_investimento.value);
+    var cilindro = input_cilindro.value;
+    var diaFechado = 0;
+    var porcentagemDestruicao = 0;
+    var prejuizoTotal = 0;
+    var lucroDiario = (porcentagemLucro / 100) * faturamento;
 
-            if (cilindro == "Pequeno") { //cilindros leves
-                    diaFechado = 3;
-                    porcentagemDestruicao = 0.1;
-                    estrutura *= porcentagemDestruicao; // Porcentagem de destruição da estrutura
-                    faturamento *= diaFechado; // Quantidade de dias de prejuízo do faturamento por conta de paralização
-                    prejuizoTotal = estrutura + faturamento;
-            }
-            if (cilindro == "Médio") { // cilindros médios
-                    diaFechado = 10;
-                    porcentagemDestruicao = 0.3;
-                    estrutura *= porcentagemDestruicao; // Porcentagem de destruição da estrutura
-                    faturamento *= diaFechado; // Quantidade de dias de prejuízo do faturamento por conta de paralização
-                    prejuizoTotal = estrutura + faturamento;
-            }
-            if (cilindro == "Grande") { //cilindros grandes
-                    diaFechado = 3;
-                    porcentagemDestruicao = 0.5;
-                    estrutura *= porcentagemDestruicao // Valor de prejuizo de acordo com a orcentagem de destruição da estrutura
-                    faturamento *= diaFechado // Quantidade de dias de prejuízo do faturamento por conta de paralização
-                    prejuizoTotal = estrutura + faturamento
-            } 
-            div_mensagem.innerHTML =
-            `O prejuízo estimado em caso de acidente envolvendo um cilindro de tamanho <b>${cilindro}</b>, que tem um
-            percentual explosivo de <b>${porcentagemDestruicao}%</b> envolve valores como: <br> 
-            <br> A danificação da estrutura do posto, como a compra de dispensers, equipamentos e
-            a construção, que chega a R$${estrutura}, dado percentual explosivo de ${porcentagemDestruicao}%. 
-            <br> A perda no faturamento devido à paralisação de ${diaFechado} dias no posto, na qual chega a R$${faturamento} 
-            <br> <br> <b> Total de prejuízo estimado: R$ ${prejuizoTotal}
+    if (cilindro == "Pequeno") {
+      //cilindros leves
+      diaFechado = 3;
+      porcentagemDestruicao = 0.1;
+      estrutura *= porcentagemDestruicao; // Porcentagem de destruição da estrutura
+      faturamento *= diaFechado; // Quantidade de dias de prejuízo do faturamento por conta de paralização
+      prejuizoTotal = estrutura + faturamento;
+    }
+    if (cilindro == "Médio") {
+      // cilindros médios
+      diaFechado = 10;
+      porcentagemDestruicao = 0.3;
+      estrutura *= porcentagemDestruicao; // Porcentagem de destruição da estrutura
+      faturamento *= diaFechado; // Quantidade de dias de prejuízo do faturamento por conta de paralização
+      prejuizoTotal = estrutura + faturamento;
+    }
+    if (cilindro == "Grande") {
+      //cilindros grandes
+      diaFechado = 30;
+      porcentagemDestruicao = 0.5;
+      estrutura *= porcentagemDestruicao; // Valor de prejuizo de acordo com a orcentagem de destruição da estrutura
+      faturamento *= diaFechado; // Quantidade de dias de prejuízo do faturamento por conta de paralização
+      prejuizoTotal = estrutura + faturamento;
+    }
+
+    var diaRecuperacao = prejuizoTotal / lucroDiario;
+    div_mensagem.innerHTML = `O prejuízo estimado em caso de acidente envolvendo um cilindro de tamanho <b>${cilindro}</b>, que tem um
+            percentual de explosão da estrutura de 
+            <b>${porcentagemDestruicao * 100}%</b> envolve valores como: <br> 
+            <br> A destruição e reconstrução da estrutura do posto, além da compra de dispensers e equipamentos novos, 
+            que chega a R$${estrutura}.
+            <br> A perda no faturamento devido à paralisação de ${diaFechado} dias no posto, na qual chega a R$${faturamento}.
+            <br> <br> <b> Total de prejuízo estimado: R$ ${prejuizoTotal}.
             </b> <br> <br> O período estimado para recuperar o prejuízo de R${prejuizoTotal} 
-            <br> será de ${500} dias, dado o lucro diário de R$${lucroDiario}.` 
-        }
-    </Script>
+            <br> será de ~${diaRecuperacao.toFixed()} dias, dado o lucro diário de R$${lucroDiario}.`;
+  }
+</script>
