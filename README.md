@@ -1,3 +1,3 @@
 # Tecnico
-Repositório dedicado aos itens técnicos do projeto
-Neste repositório, serão registrados todos os códigos e arquivos técnicos desenvolvidos pelo grupo durante o projeto.
+Repositório destinado ao armazenamento dos itens técnicos do projeto. 
+Aqui serão registrados todos os códigos e arquivos técnicos desenvolvidos pelo grupo ao longo do projeto.
