@@ -8,8 +8,17 @@
   <body>
     <div>
       <h1>Simulador de prejuízo financeiro</h1>
-      <br />
-      Qual o faturamento diário do posto: <br />
+      <p>
+        <i>
+          Em caso de explosão do cilindro do veículo durante o abastecimento.
+          <br />
+          Com base nos cilindros de pequeno, médio e grande porte.
+          <br />
+          Onde cada um possui capacidades explosivas distintas.
+        </i>
+      </p>
+
+      Qual o faturamento diário do posto (R$):<br />
       <input
         type="number"
         id="input_faturamento"
@@ -17,7 +26,8 @@
       />
       <br />
       <br />
-      Qual a margem de lucro do posto: <br />
+
+      Qual a margem de lucro do posto (%): <br />
       <input
         type="number"
         id="input_lucro"
@@ -25,7 +35,8 @@
       />
       <br />
       <br />
-      Qual foi o investimento na construção do posto:<br />
+
+      Qual foi o investimento na construção do posto (R$):<br />
       <input
         type="number"
         id="input_investimento"
@@ -33,6 +44,7 @@
       />
       <br />
       <br />
+
       Qual o tamanho do cilindro que explodiu: <br />
       <input
         type="text"
@@ -41,6 +53,7 @@
       />
       <br />
       <br />
+
       <button onclick="Calcular()">Calcular prejuízo</button>
     </div>
 
@@ -77,21 +90,21 @@
     if (cilindro == "Grande") {
       //cilindros grandes
       diaFechado = 30;
-      porcentagemDestruicao = 0.5;
+      porcentagemDestruicao = 0.4;
       estrutura *= porcentagemDestruicao; //Prejuizo de acordo com a porcentagem de destruição da estrutura
       faturamento *= diaFechado; // Quantidade de dias de prejuízo do faturamento por conta de paralização
       prejuizoTotal = estrutura + faturamento;
     }
 
     var diaRecuperacao = prejuizoTotal / lucroDiario;
-    div_mensagem.innerHTML = `O prejuízo estimado em caso de acidente envolvendo um cilindro de tamanho <b>${cilindro}</b>, que tem um
-            percentual de explosão da estrutura de 
-            <b>${porcentagemDestruicao * 100}%</b> envolve valores como: <br> 
+    porcentagemDestruicao *= 100;
+    div_mensagem.innerHTML = `O prejuízo estimado em caso de acidente envolvendo um cilindro de tamanho <b>${cilindro}</b>, que tem a capacidade
+            média de destruição de <b>${porcentagemDestruicao}%</b> da área em volta do local, envolve valores como:  <br>
             <br> A destruição e reconstrução da estrutura do posto, além da compra de dispensers e equipamentos novos, 
             que chega a R$${estrutura}.
             <br> A perda no faturamento devido à paralisação de ${diaFechado} dias no posto, na qual chega a R$${faturamento}.
             <br> <br> <b> Total de prejuízo estimado: R$ ${prejuizoTotal}.
-            </b> <br> <br> O período estimado para recuperar o prejuízo de R${prejuizoTotal} 
+            </b> <br> <br> O período estimado para recuperar o prejuízo de R$${prejuizoTotal} 
             <br> será de ~${diaRecuperacao.toFixed()} dias, dado o lucro diário de R$${lucroDiario}.`;
   }
 </script>
