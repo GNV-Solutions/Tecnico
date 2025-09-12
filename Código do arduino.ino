@@ -25,7 +25,7 @@ Serial.print("Porcentagem:");
 Serial.print(porcentagem);
 Serial.print(" ");
 Serial.print("Valor mínimo:");
-Serial.print(5);
+Serial.print(10);
 Serial.println(" ");
 
 delay(1000);
